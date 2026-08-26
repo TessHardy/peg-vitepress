@@ -29,10 +29,23 @@ export default withMermaid({
   description:
     '一份面向中文读者的、通俗易懂的提示工程（Prompt Engineering）学习指南，改编自 dair-ai/Prompt-Engineering-Guide（MIT）。',
   lastUpdated: true,
+  // 内容源目录；显式声明避免构建产物被嵌套到 /docs/ 子路径
+  srcDir: 'docs',
   // 显式指定构建产物目录为项目根下的 dist/（与部署工作流一致）
   outDir: 'dist',
-  // 脚手架阶段允许的“暂未实现”链接：仓库根 LICENSE 与后续任务创建的文章页
-  ignoreDeadLinks: ['./LICENSE', '/introduction/what-is'],
+  // 内容增量开发期：忽略尚未创建的文章页前向链接（如 few-shot / zero-shot 互链）。
+  // T12 验证阶段将改用 linkinator 做真实死链检查，彼时会把本项收紧或关闭。
+  ignoreDeadLinks: [
+    './LICENSE',
+    /^\/introduction\//,
+    /^\/techniques\//,
+    /^\/applications\//,
+    /^\/models\//,
+    /^\/agents\//,
+    /^\/risks\//,
+    /^\/optimization\//,
+    /^\/resources\//,
+  ],
 
   // 内置 KaTeX 数学公式支持（无需额外依赖包）
   markdown: {
@@ -60,9 +73,24 @@ export default withMermaid({
     },
     nav: [
       { text: '首页', link: '/' },
+      { text: '入门', link: '/introduction/what-is' },
+      { text: '基础技巧', link: '/techniques/zero-shot' },
     ],
-    // TODO(T10): expand with the 9 content sections once article pages exist
-    sidebar: [],
+    // TODO(T10): expand with all 9 content sections once the full content push lands
+    sidebar: {
+      '/introduction/': [
+        {
+          text: '入门',
+          items: [{ text: '什么是提示工程', link: '/introduction/what-is' }],
+        },
+      ],
+      '/techniques/': [
+        {
+          text: '基础技巧',
+          items: [{ text: '零样本提示（Zero-Shot）', link: '/techniques/zero-shot' }],
+        },
+      ],
+    },
     socialLinks: [
       {
         icon: 'github',
