@@ -1,0 +1,20 @@
+{
+  "type": "module",
+  "dependencies": {
+    "markdown-it-mathjax3": "^4.3.2",
+    "mermaid": "^11.17.2",
+    "pagefind": "^1.5.2",
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-mermaid": "^2.0.17",
+    "vitepress-plugin-pagefind": "^0.4.24",
+    "vue": "^3.5.41"
+  },
+  "scripts": {
+    "dev": "node scripts/vitepress.mjs dev",
+    "build": "node scripts/vitepress.mjs build",
+    "preview": "node scripts/vitepress.mjs preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

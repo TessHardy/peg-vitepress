@@ -1,0 +1,46 @@
+/* .vitepress/theme/style.css
+ * 基础样式微调，不改动 VitePress 默认主题，仅做少量可读性增强。
+ */
+
+:root {
+  --peg-content-max-width: 860px;
+}
+
+/* 正文与代码块在窄屏下更紧凑 */
+.vp-doc {
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.vp-doc p,
+.vp-doc li {
+  line-height: 1.8;
+}
+
+/* 暗色模式下提升代码块可读性：
+   VitePress 暗色是默认主题之一，这里仅微调背景对比度与文字颜色，
+   不做整体重设计。 */
+.dark .vp-doc div[class*='language-'] {
+  background: #16161a;
+  border: 1px solid #2a2a32;
+}
+
+.dark .vp-doc div[class*='language-'] code {
+  color: #e6e6e6;
+}
+
+/* 行内代码在暗色下更柔和 */
+.dark .vp-doc :not(pre) > code {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #f0c674;
+}
+
+/* Mermaid 图表在暗色下保持可读 */
+.dark .vitepress-mermaid {
+  filter: brightness(0.95) contrast(1.05);
+}
+
+/* 页脚（docFooter / 来源声明）间距 */
+.vp-doc .VPDocFooter {
+  margin-top: 24px;
+}
