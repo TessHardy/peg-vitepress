@@ -31,6 +31,9 @@ export default withMermaid({
   lastUpdated: true,
   // 内容源目录；显式声明避免构建产物被嵌套到 /docs/ 子路径
   srcDir: 'docs',
+  // GitHub Pages 项目页部署在子路径下，必须设置 base，否则 CSS/JS 资源 404
+  // 若你的仓库名不是 peg-vitepress，请把这里改成 /<你的仓库名>/
+  base: '/peg-vitepress/',
   // 显式指定构建产物目录为项目根下的 dist/（与部署工作流一致）
   outDir: 'dist',
   // 内容增量开发期：忽略尚未创建的文章页前向链接（如 few-shot / zero-shot 互链）。
