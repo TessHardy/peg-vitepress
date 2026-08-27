@@ -75,19 +75,119 @@ export default withMermaid({
       { text: '首页', link: '/' },
       { text: '入门', link: '/introduction/what-is' },
       { text: '基础技巧', link: '/techniques/zero-shot' },
+      { text: '进阶技巧', link: '/advanced/cot' },
+      { text: '应用', link: '/applications/summarization' },
+      { text: '模型', link: '/models/overview' },
+      { text: '智能体', link: '/agents/what-is-agent' },
+      { text: '风险', link: '/risks/adversarial' },
+      { text: '资源', link: '/resources/papers' },
     ],
-    // TODO(T10): expand with all 9 content sections once the full content push lands
     sidebar: {
       '/introduction/': [
         {
           text: '入门',
-          items: [{ text: '什么是提示工程', link: '/introduction/what-is' }],
+          items: [
+            { text: '什么是提示工程', link: '/introduction/what-is' },
+            { text: '提示的组成部分', link: '/introduction/elements' },
+            { text: '提示工程基础原则', link: '/introduction/basics' },
+          ],
         },
       ],
       '/techniques/': [
         {
           text: '基础技巧',
-          items: [{ text: '零样本提示（Zero-Shot）', link: '/techniques/zero-shot' }],
+          items: [
+            { text: '零样本提示（Zero-Shot）', link: '/techniques/zero-shot' },
+            { text: '少样本提示（Few-Shot）', link: '/techniques/few-shot' },
+            { text: '指令式提示', link: '/techniques/instructions' },
+            { text: '指定输出格式', link: '/techniques/format' },
+          ],
+        },
+      ],
+      '/advanced/': [
+        {
+          text: '进阶技巧',
+          items: [
+            { text: '思维链（CoT）', link: '/advanced/cot' },
+            { text: '自洽性（Self-Consistency）', link: '/advanced/self-consistency' },
+            { text: '思维树（ToT）', link: '/advanced/tot' },
+            { text: 'ReAct（推理 + 行动）', link: '/advanced/react' },
+            { text: '程序辅助语言模型（PAL）', link: '/advanced/pal' },
+            { text: '自动提示工程（APE）', link: '/advanced/ape' },
+            { text: '主动提示（Active Prompting）', link: '/advanced/active-prompt' },
+            { text: '检索增强生成（RAG）', link: '/advanced/rag' },
+            { text: '多模态提示', link: '/advanced/multimodal' },
+            { text: '结构化输出（JSON / Function Calling）', link: '/advanced/structured-output' },
+          ],
+        },
+      ],
+      '/applications/': [
+        {
+          text: '应用',
+          items: [
+            { text: '文本摘要', link: '/applications/summarization' },
+            { text: '问答（QA）', link: '/applications/qa' },
+            { text: '文本分类', link: '/applications/classification' },
+            { text: '信息抽取', link: '/applications/extraction' },
+            { text: '代码生成', link: '/applications/code-generation' },
+            { text: '推理', link: '/applications/reasoning' },
+            { text: '数据生成', link: '/applications/data-generation' },
+          ],
+        },
+      ],
+      '/models/': [
+        {
+          text: '模型',
+          items: [
+            { text: '模型概览与选型', link: '/models/overview' },
+            { text: 'OpenAI GPT 系列', link: '/models/gpt' },
+            { text: 'Anthropic Claude', link: '/models/claude' },
+            { text: 'Google Gemini', link: '/models/gemini' },
+            { text: 'Meta Llama', link: '/models/llama' },
+            { text: '国产模型', link: '/models/domestic' },
+          ],
+        },
+      ],
+      '/agents/': [
+        {
+          text: '智能体',
+          items: [
+            { text: '什么是智能体（Agent）', link: '/agents/what-is-agent' },
+            { text: '智能体的核心组成', link: '/agents/components' },
+            { text: '函数调用与工具调用', link: '/agents/function-calling' },
+            { text: '上下文工程', link: '/agents/context-engineering' },
+          ],
+        },
+      ],
+      '/risks/': [
+        {
+          text: '风险与安全',
+          items: [
+            { text: '对抗攻击', link: '/risks/adversarial' },
+            { text: '提示注入', link: '/risks/injection' },
+            { text: '越狱（Jailbreak）', link: '/risks/jailbreak' },
+            { text: '可靠性与事实性', link: '/risks/reliability' },
+          ],
+        },
+      ],
+      '/optimization/': [
+        {
+          text: '优化与评测',
+          items: [
+            { text: '提示优化方法', link: '/optimization/optimizing-prompts' },
+            { text: '提示评测', link: '/optimization/evaluation' },
+          ],
+        },
+      ],
+      '/resources/': [
+        {
+          text: '资源',
+          items: [
+            { text: '必读论文清单', link: '/resources/papers' },
+            { text: '实用工具与框架', link: '/resources/tools' },
+            { text: '常用数据集与基准', link: '/resources/datasets' },
+            { text: '学习路径与课程', link: '/resources/courses' },
+          ],
         },
       ],
     },

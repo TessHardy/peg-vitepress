@@ -44,3 +44,70 @@
 .vp-doc .VPDocFooter {
   margin-top: 24px;
 }
+
+/* 文档顶部「难度 / 阅读时间」徽标 */
+.peg-badge {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 20px;
+}
+
+.peg-badge-item {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.peg-diff-easy {
+  color: #1a7f37;
+  background: rgba(26, 127, 55, 0.1);
+  border-color: rgba(26, 127, 55, 0.25);
+}
+
+.peg-diff-mid {
+  color: #b25e00;
+  background: rgba(178, 94, 0, 0.1);
+  border-color: rgba(178, 94, 0, 0.25);
+}
+
+.peg-diff-hard {
+  color: #cf222e;
+  background: rgba(207, 34, 46, 0.1);
+  border-color: rgba(207, 34, 46, 0.25);
+}
+
+.peg-time {
+  color: #57606a;
+  background: rgba(87, 96, 106, 0.08);
+  border-color: rgba(87, 96, 106, 0.2);
+}
+
+.dark .peg-diff-easy {
+  color: #56d364;
+  background: rgba(86, 211, 100, 0.12);
+  border-color: rgba(86, 211, 100, 0.3);
+}
+
+.dark .peg-diff-mid {
+  color: #f0b860;
+  background: rgba(240, 184, 96, 0.12);
+  border-color: rgba(240, 184, 96, 0.3);
+}
+
+.dark .peg-diff-hard {
+  color: #ff7b72;
+  background: rgba(255, 123, 114, 0.12);
+  border-color: rgba(255, 123, 114, 0.3);
+}
+
+.dark .peg-time {
+  color: #b6bdc7;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+}
