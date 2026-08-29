@@ -36,24 +36,29 @@ export default withMermaid({
   base: '/peg-vitepress/',
   // 显式指定构建产物目录为项目根下的 dist/（与部署工作流一致）
   outDir: 'dist',
-  // 内容增量开发期：忽略尚未创建的文章页前向链接（如 few-shot / zero-shot 互链）。
-  // T12 验证阶段将改用 linkinator 做真实死链检查，彼时会把本项收紧或关闭。
-  ignoreDeadLinks: [
-    './LICENSE',
-    /^\/introduction\//,
-    /^\/techniques\//,
-    /^\/applications\//,
-    /^\/models\//,
-    /^\/agents\//,
-    /^\/risks\//,
-    /^\/optimization\//,
-    /^\/resources\//,
-  ],
+  // 死链检查：9 大板块 44 篇文章已全部就位，内部链接（171 处）已逐一验证有效，
+  // 不再放宽 ignoreDeadLinks——今后任何死链都会让构建直接失败，作为质量门禁。
+  // 若后续临时需要放宽，请在此显式列出具体链接，而不是整段关闭。
 
   // 内置 KaTeX 数学公式支持（无需额外依赖包）
   markdown: {
     math: true,
   },
+
+  // 生成 sitemap.xml
+  // 注意：VitePress 1.x 生成 sitemap 时不会自动拼接 base，
+  // 页面 URL 是相对 hostname 解析的，因此 hostname 必须带上子路径（含结尾斜杠）。
+  sitemap: {
+    hostname: 'https://tesshardy.github.io/peg-vitepress/',
+  },
+
+  // 站点级 SEO 元信息（各文章页的 description 来自各自 frontmatter）
+  head: [
+    ['meta', { property: 'og:site_name', content: '提示工程指南' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:locale', content: 'zh_CN' }],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
+  ],
 
   // Pagefind 站内搜索（CJK 中文分词优化）
   vite: {
@@ -70,10 +75,7 @@ export default withMermaid({
   },
 
   themeConfig: {
-    docFooter: {
-      prev: true,
-      next: true,
-    },
+    // 「上一篇 / 下一篇」等界面文案属于中文本地化内容，统一放在 locales.root.themeConfig
     nav: [
       { text: '首页', link: '/' },
       { text: '入门', link: '/introduction/what-is' },
@@ -197,9 +199,13 @@ export default withMermaid({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/dair-ai/Prompt-Engineering-Guide',
+        link: 'https://github.com/TessHardy/peg-vitepress',
       },
     ],
+    editLink: {
+      pattern: 'https://github.com/TessHardy/peg-vitepress/edit/main/docs/:path',
+      text: '在 GitHub 上编辑此页',
+    },
   },
 
   // 国际化结构：当前仅中文（root），预留英文（en）扩展位
@@ -210,6 +216,26 @@ export default withMermaid({
       title: '提示工程指南（通俗中文版）',
       description:
         '一份面向中文读者的、通俗易懂的提示工程（Prompt Engineering）学习指南，改编自 dair-ai/Prompt-Engineering-Guide（MIT）。',
+      // VitePress 默认主题不内置中文界面文案，这里逐项汉化
+      themeConfig: {
+        outline: { label: '本页目录' },
+        lastUpdated: { text: '上次更新' },
+        docFooter: { prev: '上一篇', next: '下一篇' },
+        returnToTopLabel: '回到顶部',
+        sidebarMenuLabel: '目录',
+        darkModeSwitchLabel: '主题',
+        lightModeSwitchTitle: '切换到浅色模式',
+        darkModeSwitchTitle: '切换到深色模式',
+        langMenuLabel: '切换语言',
+        skipToContentLabel: '跳转到内容',
+        notFound: {
+          code: '404',
+          title: '页面不存在',
+          quote: '你要找的页面不在这里……可能是链接打错了，或者页面还没写完。',
+          linkLabel: '返回首页',
+          linkText: '返回首页',
+        },
+      },
     },
     // en: {
     //   label: 'English',
